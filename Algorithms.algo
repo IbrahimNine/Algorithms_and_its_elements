@@ -1,8 +1,8 @@
 ALGORITHM SentenceAnalysis;
 VAR
     Sentence : STRING; 
-    i,wrdNbr,vwlsNbr,j: INTEGER;
-    vowels: STRING = "aeiouAEIOU";
+    i,j,charNbr,wrdNbr,vwlsNbr: INTEGER;
+    vowels: STRING := "aeiouAEIOU";
     
 BEGIN
     REPEAT                   
@@ -10,18 +10,19 @@ BEGIN
     Read(Sentence); 
     UNTIL (Sentence <> "");
 
-    Sentence:=Sentence + ".";
-    i:=1;
-    wrdNbr:=1;
+    i:=0;
+    charNbr:=0;
+    wrdNbr:=0;
     vwlsNbr:=0;
 
 
     WHILE (Sentence[i] <> ".") DO
+        charNbr:=charNbr+1;
         IF (Sentence[i] = " ") THEN 
             wrdNbr:=wrdNbr+1;
         END_IF
 
-        FOR j FROM 1 TO 10 STEP 1 DO
+        FOR j FROM 0 TO 9 STEP 1 DO
             IF (Sentence[i] = vowels[j]) THEN
             vwlsNbr:=vwlsNbr+1;
         END_IF
@@ -30,5 +31,5 @@ BEGIN
         i:=i+1;
     END_WHILE
 
-    Write("Your sentence has ", i ," characters and ", wrdNbr ," words and ", vwlsNbr ," vowels.")
+    Write("Your sentence has ", charNbr ," characters and ", wrdNbr ," words and ", vwlsNbr ," vowels.")
 END
